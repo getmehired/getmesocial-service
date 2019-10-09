@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "higherstudyabroad-hsa",
+  "private_key_id": "da244f84322194f56dedb7d45127b8ea7526cf17",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDKCqfSdHrgEalp\nEYWGcKodOdffeRnbbiV1ckyQgs7upBFR+r0xgw/JuA3MdjbUxt/CKo2hTWQdKZDw\ncrMw1accn6tpCkKZ8AtWtd3j9TXJTIYZva09HRna4cjTcCWRK593KRYOiVBoFQla\n1AxVDPAlpfUuuy1+wioK4TQZX6u9oDsllKB0KZwF6mLgf2Ya3YAQxYhKDQz4t0BR\n0noAEXA6Ra786+Xqmv9GZzrQJuLaoZTISs4hmu50vHNk58Oa+l98NtbRNb2kRvyc\nRnBQOyyi6jU50qFR0/LOb2UHq5sBs0M2uwmVHSp5Ty1JYObNYbRYDYlfboabtrSU\nxRc1cVxzAgMBAAECggEAUKb/Rk5ULLUwNO6XKEs6RU9tYtqTXVpzXpZhhQCKvY3G\nEj0vICArAcHU1E1OZxL6iKZ3AjCEKfYJU0reSDzJqG3+vYAohQ3jYNpZuOGOdoxz\nLbxfdvlydENUaT8n5/MLhcRjdysOa3YWVWk3gQ4YoVbF8MEskKDOqqgqpYRg6OFj\nfpPZPCPDfhA3gWc3oQyxWdPhpMgV2Yjg8niEq4d3nG53JM2DCufQMbN5Qo/lFljD\nI1IK7rCEf5xFod6eZ+tQTlywns8lHSd3rsPGhO5PICZPGTHEZFSxIB7PLHS4DCAP\nlG9CqSpiMR3ppO6Iu4PxqnJbk1cHs9DaighD9CzXqQKBgQDrGBUJ+L6TeBB4cCJF\njMUzMXB1hfw6owgcgQAcRZEpafor/j1zugq6+NdRRzmapJBG/DljCjgeSaqmnS8q\nqLcoDXHwETEswAyThvu/YjHWwSiX/nEEHfx0rw9yKgveQg4RsmdsWaOZ/RJUr2yV\nMeZvt16oCUCzYmtiMz5ToeoyqwKBgQDcAiJcCgFyrZuMTC4gsb/qNhAMLcFZM05P\nFo15yaC/fON7kKw57fS3smOUeuXlxdw2qKhseARbpw6tDzrpU/FhF5nhUbbreMYy\nNFxYlyJe7IfYBH3YEgIN+CfZ5pBfzcT4K3ZbMQsQgd9++UqfyD4zYItv+J66caDI\npKfuftk9WQKBgHQHIbMXMi+kLTTT2wZKcLVQbDmElDT4a7Nts3lAmGFBLbhytS+d\nnVgkIli592MsXwy5xTTtQT8pinDK2RGLzUGWSSp7wbJdYpeZIjyVoRVlpbxGVs76\nYbPRBqWIvOzH2xu+2i5um0EP1vE21zdXNmziqnPyhR1DsM35joRGQEkbAoGAOyuv\nxgVC4m7iuNb8SPrFXN5xbnUX3T+5PfgY0Lpzq0yRefgs+d+Pw6AMvDBZiHSwh1rR\nAWs98NB7V/wSohJbhvtr/XeWtLnkxDfk5kavjcwbtPNwTR56wvsM7MPf7IRRB1XZ\nHSmRij0DuQifE14trG+40MKTHh3VWmE+cRxYnPECgYAfCOGtMRIcSM1/fZvGVm8j\n4EH/09isOmx7MeePYotKVWcgUW7lqNuRHKkma71DaTMklpESFuq7djr2kfOvbXzl\nv/aUzWj+ICfwWB1asHFsYy+NXHWkvED8Q6JhvG/0KRSkv8KetFCC0SjC/ZUF2PDS\nOrYcYHQJXoyXkiABeWzCnA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-0boft@higherstudyabroad-hsa.iam.gserviceaccount.com",
+  "client_id": "103548037432690118989",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-0boft%40higherstudyabroad-hsa.iam.gserviceaccount.com"
+}
