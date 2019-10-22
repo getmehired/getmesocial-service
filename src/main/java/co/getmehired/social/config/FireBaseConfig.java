@@ -14,7 +14,6 @@ import java.io.IOException;
 @Configuration
 public class FireBaseConfig {
 
-/*
 	@Bean
 	FirebaseApp createFireBaseApp() throws IOException {
 		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
@@ -28,6 +27,5 @@ public class FireBaseConfig {
 
 		return FirebaseApp.initializeApp(options);
 	}
-*/
 
 }
