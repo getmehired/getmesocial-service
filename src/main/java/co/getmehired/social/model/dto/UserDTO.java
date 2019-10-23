@@ -16,5 +16,6 @@ public class UserDTO {
 
 	@UniqueEmailAddress
 	private String emailAddress;
-	
+
+	private String profilePhotoUrl;
 }

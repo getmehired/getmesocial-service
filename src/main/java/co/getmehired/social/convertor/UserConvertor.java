@@ -9,11 +9,11 @@ public class UserConvertor {
   }
 
   public static UserDTO toDto(User u) {
-    return new UserDTO(u.getId(), u.getName(), u.getEmailAddress());
+    return new UserDTO(u.getId(), u.getName(), u.getEmailAddress(), u.getProfilePhotoUrl());
   }
 
   public static User fromDto(UserDTO udto) {
-    return new User(udto.getId(), udto.getName(), udto.getEmailAddress());
+    return new User(udto.getId(), udto.getName(), udto.getEmailAddress(), udto.getProfilePhotoUrl());
   }
 
 }

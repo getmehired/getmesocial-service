@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 
 /**
  * Created by Supal on 08-Oct-19.
@@ -17,18 +18,18 @@ import javax.validation.constraints.Pattern;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="users")
-public class User {
+@Document(collection="albums")
+public class Album {
 
     @Id
     private String id;
 
-    @NotNull(message = " Must have a name starting with a capital")
-    @Pattern(regexp = "^[A-Za-z]*$")
-    private String name;
+    private String title;
 
-    @UniqueEmailAddress
-    private String emailAddress;
+    private String coverPhotoUrl;
 
-    private String profilePhotoUrl;
+    private Date creationDate;
+
+    private User createdBy;
+
 }
