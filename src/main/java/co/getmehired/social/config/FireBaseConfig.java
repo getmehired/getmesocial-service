@@ -22,7 +22,7 @@ public class FireBaseConfig {
 
 		FirebaseOptions options = new FirebaseOptions.Builder()
 				.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-				.setDatabaseUrl("")
+				.setDatabaseUrl("https://myphotoapp-a4214.firebaseio.com")
 				.build();
 
 		return FirebaseApp.initializeApp(options);
