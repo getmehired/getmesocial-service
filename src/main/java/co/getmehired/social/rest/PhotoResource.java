@@ -1,12 +1,13 @@
 package co.getmehired.social.rest;
 
 import co.getmehired.social.convertor.PhotoConvertor;
+import co.getmehired.social.model.FirebaseUser;
 import co.getmehired.social.model.Photo;
 import co.getmehired.social.model.dto.PhotoDTO;
 import co.getmehired.social.service.PhotoService;
-import co.getmehired.social.service.UserService;
 import com.google.firebase.auth.FirebaseAuth;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +24,7 @@ import java.util.concurrent.ExecutionException;
 @RequestMapping("/api/photos")
 public class PhotoResource {
 
-
-    @Autowired
-    private UserService userService;
+    private FirebaseUser firebaseUser;
 
     @Autowired
     private PhotoService photoService;
@@ -58,12 +57,17 @@ public class PhotoResource {
             String uid = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
             String name = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
             String email = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getEmail();
+
+            if (!StringUtils.isEmpty(uid) && !StringUtils.isEmpty(email)) {
+                FirebaseUser firebaseUser = new FirebaseUser(uid, name, email);
+                this.firebaseUser = firebaseUser;
+            }
+
         } catch (InterruptedException | ExecutionException e) {
             return false;
         }
 
         return true;
     }
-
 
 }

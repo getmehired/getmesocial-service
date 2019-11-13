@@ -21,12 +21,14 @@ public class Photo {
     @Id
     private String id;
 
+    private String albumId;
+
     private String thumbnailUrl;
 
     private String photoUrl;
 
     private Date dateCreated;
 
-    private User createdBy;
+    private String createdBy;
 
 }

@@ -1,11 +1,9 @@
 package co.getmehired.social.model.dto;
 
-import co.getmehired.social.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
@@ -21,12 +19,14 @@ public class PhotoDTO {
     @Id
     private String id;
 
+    private String albumId;
+
     private String thumbnailUrl;
 
     private String photoUrl;
 
     private Date dateCreated;
 
-    private UserDTO createdBy;
+    private String createdBy;
 
 }

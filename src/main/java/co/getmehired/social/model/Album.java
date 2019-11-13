@@ -1,14 +1,11 @@
 package co.getmehired.social.model;
 
-import co.getmehired.social.validator.UniqueEmailAddress;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 /**
@@ -30,6 +27,6 @@ public class Album {
 
     private Date creationDate;
 
-    private User createdBy;
+    private String createdBy;
 
 }

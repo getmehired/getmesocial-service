@@ -21,6 +21,7 @@ public class AlbumConvertor {
     // TODO populate other objects
     Album album = new Album();
     album.setTitle(dto.getTitle());
+    album.setCoverPhotoUrl(dto.getCoverPhotoUrl());
     return album;
   }
 

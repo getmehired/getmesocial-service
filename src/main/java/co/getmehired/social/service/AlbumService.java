@@ -5,6 +5,7 @@ import co.getmehired.social.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +21,13 @@ public class AlbumService {
         return albumRepository.findAll();
     }
 
+    public List<Album> getAlbumsByUser(String createdBy) {
+        return albumRepository.findAllByCreatedBy(createdBy);
+    }
+
+
     public Album saveAlbum(Album album) {
+        album.setCreationDate(new Date());
         return albumRepository.save(album);
     }
 
