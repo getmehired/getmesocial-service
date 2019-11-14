@@ -4,6 +4,7 @@ import co.getmehired.social.convertor.AlbumConvertor;
 import co.getmehired.social.convertor.PhotoConvertor;
 import co.getmehired.social.convertor.UserConvertor;
 import co.getmehired.social.exception.InvalidIdTokenException;
+import co.getmehired.social.exception.InvalidInputException;
 import co.getmehired.social.model.Album;
 import co.getmehired.social.model.FirebaseUser;
 import co.getmehired.social.model.Photo;
@@ -101,6 +102,41 @@ public class AlbumResource {
         album.setCreatedBy(firebaseUser.getEmail());
         album = albumService.saveAlbum(album);
         return AlbumConvertor.toDto(album);
+    }
+
+    @PutMapping
+    public AlbumDTO updateAlbum(@RequestBody AlbumDTO albumDTO, @RequestHeader String idToken) {
+
+        if (!isValidUser(idToken)) {
+            throw new InvalidIdTokenException("Invalid Id Token");
+        }
+
+        Album oldAlbum = albumService.findById(albumDTO.getId());
+        if(oldAlbum != null) {
+
+            boolean hasChange = false;
+
+            if(!StringUtils.isEmpty(albumDTO.getTitle()) && !oldAlbum.getTitle().equals(albumDTO.getTitle())) {
+                oldAlbum.setTitle(albumDTO.getTitle());
+                hasChange = true;
+            }
+
+            if(!StringUtils.isEmpty(albumDTO.getCoverPhotoUrl()) && !oldAlbum.getCoverPhotoUrl().equals(albumDTO.getCoverPhotoUrl())) {
+                oldAlbum.setCoverPhotoUrl(albumDTO.getCoverPhotoUrl());
+                hasChange = true;
+            }
+
+            if(hasChange) {
+                Album album  = albumService.updateAlbum(oldAlbum);
+                return AlbumConvertor.toDto(album);
+            } else {
+                return AlbumConvertor.toDto(oldAlbum);
+            }
+
+        } else {
+            throw new InvalidInputException("Album not found");
+        }
+
     }
 
     private boolean isValidUser(String idToken) {
