@@ -19,10 +19,6 @@ import java.io.InputStream;
 
 public  class AmazonUtil {
 
-    public static final String BUCKET_NAME = "getmesocial";
-    public static final String S3_ACCESS_KEY = "AKIAJY6L36I7MHFB75TQ";
-    public static final String S3_SECRET_KEY = "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";
-
     public static boolean uploadToAmazonS3(MultipartFile file, String path) {
         try {
         	byte[] fileBytes = file.getBytes();
@@ -32,7 +28,7 @@ public  class AmazonUtil {
             metadata.setContentLength(fileBytes.length);
             AmazonS3Client s3Client = getS3Client();
             if(!StringUtils.isEmpty(path)) {
-            	s3Client.putObject(BUCKET_NAME, path, new ByteArrayInputStream(fileBytes), metadata);
+            	s3Client.putObject(PrivateKeys.BUCKET_NAME, path, new ByteArrayInputStream(fileBytes), metadata);
             	return true;
             } else {
             	return false;
@@ -67,7 +63,7 @@ public  class AmazonUtil {
     	AmazonS3Client s3Client = getS3Client();
     	
         try {
-            ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(BUCKET_NAME).withPrefix(filePath);
+            ListObjectsRequest listObjectsRequest = new ListObjectsRequest().withBucketName(PrivateKeys.BUCKET_NAME).withPrefix(filePath);
             ObjectListing listing = s3Client.listObjects(listObjectsRequest);
             return listing != null && listing.getObjectSummaries() != null && listing.getObjectSummaries().size() > 0;
         } catch (AmazonClientException e) {
@@ -77,7 +73,7 @@ public  class AmazonUtil {
     
     public static byte[] getFromAmazonS3(String filePath) throws Exception {
     	AmazonS3Client s3Client = getS3Client();
-        S3Object s3Object = s3Client.getObject(BUCKET_NAME, filePath);
+        S3Object s3Object = s3Client.getObject(PrivateKeys.BUCKET_NAME, filePath);
         InputStream objectData = s3Object.getObjectContent();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         IOUtils.copy(objectData, baos);
@@ -87,11 +83,11 @@ public  class AmazonUtil {
 
     public static void deleteFromAmazonS3(String filePath) throws Exception {
     	AmazonS3Client s3Client = getS3Client();
-    	s3Client.deleteObject(BUCKET_NAME, filePath);
+    	s3Client.deleteObject(PrivateKeys.BUCKET_NAME, filePath);
     }
 
     public static AmazonS3Client getS3Client() {
-        BasicAWSCredentials credentials = new BasicAWSCredentials(S3_ACCESS_KEY, S3_SECRET_KEY);
+        BasicAWSCredentials credentials = new BasicAWSCredentials(PrivateKeys.S3_ACCESS_KEY, PrivateKeys.S3_SECRET_KEY);
         return new AmazonS3Client(credentials);
     }
 }
