@@ -5,6 +5,7 @@ import co.getmehired.social.repository.PhotoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +22,7 @@ public class PhotoService {
     }
 
     public Photo savePhoto(Photo photo) {
+        photo.setDateCreated(new Date());
         return photoRepository.save(photo);
     }
 

@@ -1,12 +1,15 @@
 package co.getmehired.social.rest;
 
 import co.getmehired.social.convertor.AlbumConvertor;
+import co.getmehired.social.convertor.PhotoConvertor;
 import co.getmehired.social.convertor.UserConvertor;
 import co.getmehired.social.exception.InvalidIdTokenException;
 import co.getmehired.social.model.Album;
 import co.getmehired.social.model.FirebaseUser;
+import co.getmehired.social.model.Photo;
 import co.getmehired.social.model.User;
 import co.getmehired.social.model.dto.AlbumDTO;
+import co.getmehired.social.model.dto.PhotoDTO;
 import co.getmehired.social.model.dto.UserDTO;
 import co.getmehired.social.service.AlbumService;
 import co.getmehired.social.service.UserService;
@@ -68,6 +71,24 @@ public class AlbumResource {
 
         return albumDTOs;
     }
+
+    @GetMapping("/{id}/photos")
+    public List<PhotoDTO> getMyAlbums(@RequestHeader String idToken, @RequestParam(name = "id") String id) {
+
+        if (!isValidUser(idToken)) {
+            throw new InvalidIdTokenException("Invalid Id Token");
+        }
+
+        List<Photo> photos = albumService.getPhotos(id);
+
+        List<PhotoDTO> photoDTOs = new ArrayList<>();
+        for(Photo photo:photos) {
+            photoDTOs.add(PhotoConvertor.toDto(photo));
+        }
+
+        return photoDTOs;
+    }
+
 
     @PostMapping
     public AlbumDTO saveAlbum(@RequestBody AlbumDTO albumDTO, @RequestHeader String idToken) {

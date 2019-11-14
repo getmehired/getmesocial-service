@@ -30,8 +30,15 @@ public class PhotoResource {
     private PhotoService photoService;
 
     @PostMapping
-    public PhotoDTO savePhoto(@Validated @RequestBody PhotoDTO photoDTO) {
-        Photo photo = photoService.savePhoto(PhotoConvertor.fromDto(photoDTO));
+    public PhotoDTO savePhoto(@RequestHeader String idToken, @Validated @RequestBody PhotoDTO photoDTO) {
+
+        if (!isValidUser(idToken)) {
+            return null;
+        }
+
+        Photo photo = PhotoConvertor.fromDto(photoDTO);
+        photo.setCreatedBy(firebaseUser.getEmail());
+        photoService.savePhoto(photo);
         return PhotoConvertor.toDto(photo);
     }
 
