@@ -40,4 +40,8 @@ public class AlbumService {
         return albumRepository.save(album);
     }
 
+    public Album findById(String id) {
+        return albumRepository.findById(id).get();
+    }
+
 }
