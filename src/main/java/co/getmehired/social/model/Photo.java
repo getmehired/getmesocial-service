@@ -27,6 +27,8 @@ public class Photo {
 
     private String photoUrl;
 
+    private String fileId;
+
     private Date dateCreated;
 
     private String createdBy;

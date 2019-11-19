@@ -25,6 +25,7 @@ public class PhotoConvertor {
     Photo photo = new Photo();
     photo.setPhotoUrl(dto.getPhotoUrl());
     photo.setAlbumId(dto.getAlbumId());
+    photo.setFileId(dto.getFileId());
     photo.setThumbnailUrl(dto.getThumbnailUrl());
     return photo;
   }

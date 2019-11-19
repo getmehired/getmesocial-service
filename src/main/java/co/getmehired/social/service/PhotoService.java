@@ -21,6 +21,10 @@ public class PhotoService {
         return photoRepository.findAll();
     }
 
+    public Photo getPhotoById(String id) {
+        return photoRepository.findById(id).get();
+    }
+
     public Photo savePhoto(Photo photo) {
         photo.setDateCreated(new Date());
         return photoRepository.save(photo);

@@ -21,8 +21,10 @@ public class CommentDTO {
 
     private String comment;
 
+    private String photoId;
+
     private Date dateCreated;
 
-    private UserDTO createdBy;
+    private String createdBy;
 
 }

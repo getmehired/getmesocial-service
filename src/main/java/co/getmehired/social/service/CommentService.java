@@ -20,4 +20,12 @@ public class CommentService {
         return commentRepository.findAll();
     }
 
+    public Comment save(Comment comment) {
+        return commentRepository.save(comment);
+    }
+
+    public List<Comment> getCommentsByPhotoId(String photoId) {
+        return commentRepository.findAllByPhotoId(photoId);
+    }
+
 }

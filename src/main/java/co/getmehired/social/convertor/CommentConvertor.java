@@ -9,14 +9,20 @@ public class CommentConvertor {
   }
 
   public static CommentDTO toDto(Comment comment) {
-    // TODO populate other objects
     CommentDTO dto = new CommentDTO();
+    dto.setId(comment.getId());
+    dto.setComment(comment.getComment());
+    dto.setPhotoId(comment.getPhotoId());
+    dto.setDateCreated(comment.getDateCreated());
+    dto.setCreatedBy(comment.getCreatedBy());
     return dto;
   }
 
   public static Comment fromDto(CommentDTO dto) {
-    // TODO populate other objects
     Comment comment = new Comment();
+    comment.setPhotoId(dto.getPhotoId());
+    comment.setComment(dto.getComment());
+    comment.setCreatedBy(dto.getCreatedBy());
     return comment;
   }
 

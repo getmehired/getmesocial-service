@@ -21,6 +21,8 @@ public class PhotoDTO {
 
     private String albumId;
 
+    private String fileId;
+
     private String thumbnailUrl;
 
     private String photoUrl;

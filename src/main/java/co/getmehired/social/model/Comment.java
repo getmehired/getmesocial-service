@@ -21,10 +21,12 @@ public class Comment {
     @Id
     private String id;
 
+    private String photoId;
+
     private String comment;
 
     private Date dateCreated;
 
-    private User createdBy;
+    private String createdBy;
 
 }
