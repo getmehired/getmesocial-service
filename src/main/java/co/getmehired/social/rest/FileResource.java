@@ -30,7 +30,7 @@ public class FileResource {
 	
     @PostMapping("/upload")
     public File uploadFile(
-    		@RequestParam("file") MultipartFile file) {
+    		@RequestParam("file0") MultipartFile file) {
         File uploadedFile = fileStorageService.storeFile(file);
 
         return uploadedFile;
