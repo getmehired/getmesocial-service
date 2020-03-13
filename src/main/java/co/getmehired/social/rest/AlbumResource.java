@@ -2,27 +2,19 @@ package co.getmehired.social.rest;
 
 import co.getmehired.social.convertor.AlbumConvertor;
 import co.getmehired.social.convertor.PhotoConvertor;
-import co.getmehired.social.convertor.UserConvertor;
 import co.getmehired.social.exception.InvalidIdTokenException;
 import co.getmehired.social.exception.InvalidInputException;
 import co.getmehired.social.model.Album;
 import co.getmehired.social.model.FirebaseUser;
 import co.getmehired.social.model.Photo;
-import co.getmehired.social.model.User;
 import co.getmehired.social.model.dto.AlbumDTO;
 import co.getmehired.social.model.dto.PhotoDTO;
-import co.getmehired.social.model.dto.UserDTO;
 import co.getmehired.social.service.AlbumService;
-import co.getmehired.social.service.UserService;
-import co.getmehired.social.util.FirebaseUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -73,8 +65,23 @@ public class AlbumResource {
         return albumDTOs;
     }
 
+    @PutMapping("/coverPhoto")
+    public AlbumDTO updateCoverPhoto(@RequestHeader String idToken, @RequestParam(name = "id") String id, @RequestParam(name = "photoUrl") String photoUrl) {
+
+        if (!isValidUser(idToken)) {
+            throw new InvalidIdTokenException("Invalid Id Token");
+        }
+
+        Album album = albumService.findById(id);
+        album.setCoverPhotoUrl(photoUrl);
+        album = albumService.saveAlbum(album);
+
+        return AlbumConvertor.toDto(album);
+    }
+
+
     @GetMapping("/{id}/photos")
-    public List<PhotoDTO> getMyAlbums(@RequestHeader String idToken, @RequestParam(name = "id") String id) {
+    public List<PhotoDTO> getMyAlbums(@RequestHeader String idToken, @PathVariable(name = "id") String id) {
 
         if (!isValidUser(idToken)) {
             throw new InvalidIdTokenException("Invalid Id Token");

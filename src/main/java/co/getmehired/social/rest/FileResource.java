@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/files")
 public class FileResource {
@@ -29,7 +30,7 @@ public class FileResource {
 	
     @PostMapping("/upload")
     public File uploadFile(
-    		@RequestParam("file") MultipartFile file) {
+    		@RequestParam("file0") MultipartFile file) {
         File uploadedFile = fileStorageService.storeFile(file);
 
         return uploadedFile;

@@ -59,6 +59,45 @@ public class UserResource {
         return userDto;
     }
 
+    @GetMapping
+    public UserDTO getUser(@RequestHeader String idToken, @RequestParam(name = "email") String email) {
+
+        if (!isValidUser(idToken)) {
+            return null;
+        }
+        UserDTO userDto = new UserDTO();
+        if (this.userService.emailExist(email)) {
+            User u = userService.getByEmailAddress(email).orElseGet(null);
+            userDto = UserConvertor.toDto(u);
+        }
+        return userDto;
+    }
+
+    @PutMapping("/me/profilePhoto")
+    public UserDTO updateProfilePhoto(@RequestHeader String idToken, @RequestParam(name = "photoUrl") String photoUrl) {
+
+        if (!isValidUser(idToken)) {
+            return null;
+        }
+        UserDTO userDto = new UserDTO();
+        try {
+            String firebaseId = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getUid();
+            String name = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getName();
+            String email = FirebaseAuth.getInstance().verifyIdTokenAsync(idToken).get().getEmail();
+
+            if (this.userService.emailExist(email)) {
+                User u = userService.getByEmailAddress(email).orElseGet(null);
+                u.setProfilePhotoUrl(photoUrl);
+                userDto = UserConvertor.toDto(userService.save(u));
+            }
+
+        } catch (InterruptedException | ExecutionException e) {
+            return null;
+        }
+
+        return userDto;
+    }
+
     private boolean isValidUser(String idToken) {
 
         try {
